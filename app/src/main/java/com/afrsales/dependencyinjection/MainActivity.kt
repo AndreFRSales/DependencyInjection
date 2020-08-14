@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        presenter = MainPresenter()
+        val mainData = MainData()
+        val mainRepo = MainRepo(mainData)
+        presenter = MainPresenter(mainRepo)
         val response = presenter.fetchData()
         val text: TextView = findViewById(R.id.mainText)
         text.text = response
